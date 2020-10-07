@@ -32,16 +32,15 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 								 * methods are declared in this class
 								 */
 @EnableSwagger2
+
 public class EasynotesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(EasynotesApplication.class);
-		
-		 
-		
-app.run(EasynotesApplication.class);// The spring container gets
-															// started(ConfigurableApplicationContext) once this is
-															// called.
+
+		app.run(EasynotesApplication.class);// The spring container gets
+											// started(ConfigurableApplicationContext) once this is
+											// called.
 
 		/*
 		 * Once the spring container gets started, it is responsible for: 1. Creating
@@ -54,11 +53,8 @@ app.run(EasynotesApplication.class);// The spring container gets
 
 	@Bean
 	public Docket swaggerConfiguration() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.select()
-				.paths(PathSelectors.ant("/api/*"))
-				.apis(RequestHandlerSelectors.basePackage("com.example"))
-				.build();
+		return new Docket(DocumentationType.SWAGGER_2).select().paths(PathSelectors.ant("/api/*"))
+				.apis(RequestHandlerSelectors.basePackage("com.example")).build();
 	}
 
 }
