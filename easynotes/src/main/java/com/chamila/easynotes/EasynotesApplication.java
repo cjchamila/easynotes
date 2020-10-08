@@ -35,6 +35,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 public class EasynotesApplication {
 
+	
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(EasynotesApplication.class);
 
