@@ -56,5 +56,7 @@ public class EasynotesApplication {
 		return new Docket(DocumentationType.SWAGGER_2).select().paths(PathSelectors.ant("/api/*"))
 				.apis(RequestHandlerSelectors.basePackage("com.example")).build();
 	}
+	
+	//****************
 
 }
