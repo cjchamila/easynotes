@@ -23,7 +23,7 @@ pipeline {
 	
 	steps{
 	    withMaven(maven : 'Maven-3.6.3') {
-			bat'mvn install -DskipTests'
+			bat'mvn install'
            } 
         }
             }
