@@ -11,7 +11,7 @@ pipeline {
         stage('Test') {  
 		steps {
 			withMaven(maven : 'Maven-3.6.3') {
-			bat'mvn install'
+			bat'mvn test'
 			}
 			}
                
@@ -19,11 +19,8 @@ pipeline {
         
 	stage('Deploy') {
 	steps{
-	    when {
-              expression {
-                currentBuild.result == null || currentBuild.result == 'SUCCESS' 
-              }
-            }
+	    withMaven(maven : 'Maven-3.6.3') {
+			bat'mvn install'
            } 
         }
             }
