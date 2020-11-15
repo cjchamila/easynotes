@@ -18,12 +18,13 @@ pipeline {
             }
         
 	stage('Deploy') {
-            when {
+	steps{
+	    when {
               expression {
                 currentBuild.result == null || currentBuild.result == 'SUCCESS' 
               }
             }
-            
+           } 
         }
             }
             
