@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,12 +19,11 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@Configuration
+ /*
+ * @Configuration
 @ComponentScan
-@EnableAutoConfiguration /*
-							 * @SpringBootApplication can be used once in place
-							 * of @Configuration, @ComponentScan and @EnableAutoConfiguration
-							 */
+@EnableAutoConfiguration can be used in place of @SpringBootApplication
+ */
 
 @EnableJpaAuditing
 @Import(NoteController.class) /*
@@ -31,7 +31,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 								 * methods are declared in this class
 								 */
 @EnableSwagger2
-
+@SpringBootApplication 
 public class EasynotesApplication {
 //Comment........
 	
