@@ -8,6 +8,7 @@ pipeline {
                echo 'Building step3...'
                echo 'Building step4...'
                echo 'Building step5...'
+               echo 'Building step6...'
             }
         }
         stage('Test') { 
