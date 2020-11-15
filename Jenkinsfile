@@ -3,33 +3,29 @@ pipeline {
     stages {
         stage('Build') { 
            steps {
-                bat 'make' 
-                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true 
+               withMaven(maven : 'Maven-3.6.3') {
+				bat'mvn clean compile'
             }
         }
+        }
         stage('Test') { 
-            steps {
-              bat 'make check || true'
-              junit '**/target/*.xml'
-
-                   }
-               }
+			            steps {
+			withMaven(maven : 'Maven-3.6.3') {
+			bat'mvn install'
+			}
+			}
                
-                stage('Deploy') {
+            }
+        
+	stage('Deploy') {
             when {
               expression {
                 currentBuild.result == null || currentBuild.result == 'SUCCESS' 
               }
             }
-            steps {
-                bat 'make publish'
-            }
+            
         }
-        
-
-            }
-        
-
             }
             
+}
 
