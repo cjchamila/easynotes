@@ -2,32 +2,39 @@ pipeline {
     agent any 
     stages {
         stage('Build') { 
-            steps {
-               echo 'Building step1...'
-               echo 'Building step2...'
-
-               echo 'Building step3...'
-               echo 'Building step4...'
-               echo 'Building step5...'
-               echo 'Building step6...'
-               echo 'Building step7...'
+           steps {
+                bat 'make' 
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true 
             }
         }
         stage('Test') { 
             steps {
-               echo 'Testing step 1...'
-               echo 'Testing step 2...'
-               echo 'Testing step 3...'  
-               echo 'Testing step 4...' 
+              bat 'make check || true'
+              junit '**/target/*.xml'
+
+                   }
+               }
+
             }
         }
-        stage('Deploy') { 
+       stage('Deploy') {
+            when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS' 
+              }
+            }
             steps {
-                 echo 'Deploying step1...'
-                 echo 'Deploying step2...'
-                 
+                bat 'make publish'
             }
         }
+        
+
+        }
+
+            }
+            
+        }
+
     }
 }
 
