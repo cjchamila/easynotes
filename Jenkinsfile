@@ -2,6 +2,7 @@ pipeline {
     agent any 
     stages {
         stage('Build') { 
+        echo 'Build stage'
            steps {
                withMaven(maven : 'Maven-3.6.3') {
 				bat'mvn clean compile'
@@ -9,6 +10,7 @@ pipeline {
         }
         } 
         stage('Test') {  
+        echo 'Test stage'
 		steps {
 			withMaven(maven : 'Maven-3.6.3') {
 			bat'mvn test'
@@ -18,6 +20,7 @@ pipeline {
             }
         
 	stage('Deploy') {
+	echo 'Deploy stage'
 	steps{
 	    withMaven(maven : 'Maven-3.6.3') {
 			bat'mvn install'
